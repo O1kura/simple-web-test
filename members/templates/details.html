@@ -1,0 +1,23 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Details about {{ mymember.firstname }} {{ mymember.lastname }}
+{% endblock %}
+
+
+{% block content %}
+  <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <label>Phone</label>
+    <input type="tel" name="phone" value={{mymember.phone}}><br><br>
+    <label>Joined Date</label>
+    <input type="date" name="joined_date" value="{{mymember.joined_date|date:'Y-m-d'}}">
+    <br>
+    <br>
+    <input type="submit" name="remove" value="Remove">
+    <input type="submit" name="save" value="Save Changes">
+  </form>
+  <p>Back to <a href="/members">Members</a></p>
+{% endblock %}

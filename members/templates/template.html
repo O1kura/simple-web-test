@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+</head>
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
+<body>
+
+<p>The queryset object:</p>
+
+{{ mymembers }}
+
+<p>Loop through the items:</p>
+
+<table border='1'>
+  <tr>
+    <th>ID</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+  </tr>
+  {% for x in mymembers %}
+    <tr>
+      <td>{{ x.id }}</td>
+      <td>{{ x.firstname }}</td>
+      <td>{{ x.lastname }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>

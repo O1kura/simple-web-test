@@ -1,0 +1,29 @@
+{% extends "master.html" %}
+
+{% block title %}
+  My Tennis Club - List of all members
+{% endblock %}
+
+
+{% block content %}
+    <header>
+        {%if request.user.is_authenticated %}
+  			<span>Hi {{ request.user.username | title }}</span>
+  			<a href="{% url 'logout' %}">Logout</a>
+  		{%else%}
+  			<a href="{% url 'login' %}">Login</a>
+  		{%endif%}
+    </header>
+    <main>
+        <p><a href="/">HOME</a></p>
+        <h1>Members</h1>
+        <div>
+            <ul>
+            {% for x in mymembers %}
+              <li><a href="details/{{ x.id }}">{{ x.firstname }} {{ x.lastname }}</a></li>
+            {% endfor %}
+            </ul>
+            <a href="{% url 'add' %}">Add</a>
+        </div>
+    </main>
+{% endblock %}
