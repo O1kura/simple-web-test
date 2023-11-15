@@ -121,12 +121,19 @@ def add(request):
         context = {'form': MemberForm()}
         return render(request, 'test/add_member.html', context)
     elif request.method == 'POST':
-        form = MemberForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # messages.success(
-            #     request, 'The post has been created successfully.')
-            return redirect('members')
-        else:
-            # messages.error(request, 'Please correct the following errors:')
-            return render(request, 'test/add_member.html', {'form': form})
+        if 'save' in request.POST:
+            form = MemberForm(request.POST)
+            if form.is_valid():
+                form.save()
+                # messages.success(
+                #     request, 'The post has been created successfully.')
+                return redirect('members')
+            else:
+                # messages.error(request, 'Please correct the following errors:')
+                return render(request, 'test/add_member.html', {'form': form})
+        # elif 'cancel' in request.POST:
+        #     form = MemberForm(request.POST)
+        #     form.
+        #     form.empty_permitted = True
+        #     return redirect('members')
+

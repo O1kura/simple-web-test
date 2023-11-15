@@ -8,7 +8,13 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Save">
+        <input type="submit" name="save" value="Save">
+        <input type="submit" name="cancel" onclick="Cancel()" value="Cancel">
     </form>
+    <script>
+        function Cancel(){
+            window.location.href = '/members'
+        }
+    </script>
 </body>
 </html>
