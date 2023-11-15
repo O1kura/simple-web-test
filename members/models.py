@@ -9,3 +9,6 @@ class Member(models.Model):
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
+
+    class Meta:
+        db_table = 'members'
